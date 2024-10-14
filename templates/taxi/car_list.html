@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 
 {% block title %}
-  <title>Car Detail</title>
+  <title>Car List</title>
 {% endblock %}
 
 {% block content %}
-  <h2>Car Detail</h2>
+  <h2>Car List </h2>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Model</th>
         <th>Manufacturer</th>
         <th>Country</th>
-        <th>All drivers</th>
+        <th>All Drivers</th>
+        <th>License Number</th>
       </tr>
     </thead>
     <tbody>
+      {% for car in cars %}
       <tr>
         <td>{{ car.model }}</td>
         <td>{{ car.manufacturer.name }}</td>
@@ -25,8 +27,13 @@
             {{ driver.first_name }} {{ driver.last_name }}<br>
           {% endfor %}
         </td>
-        <td>{{ driver.license_number }}</td>
+        <td>
+          {% for driver in car.drivers.all %}
+            {{ driver.license_number }}<br>
+          {% endfor %}
+        </td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock content %}

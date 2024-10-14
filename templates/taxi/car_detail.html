@@ -12,7 +12,8 @@
         <th>Model</th>
         <th>Manufacturer</th>
         <th>Country</th>
-        <th>All drivers</th>
+        <th>Drivers</th>
+        <th>License Number</th>
       </tr>
     </thead>
     <tbody>
@@ -22,11 +23,11 @@
         <td>{{ car.manufacturer.country }}</td>
         <td>
           {% for driver in car.drivers.all %}
-            {{ driver.first_name }} {{ driver.last_name }}<br>
-          {% endfor %}
+            {{ driver.first_name }} {{ driver.last_name }}
         </td>
         <td>{{ driver.license_number }}</td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock content %}
